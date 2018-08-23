@@ -1,7 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
-  var Example = sequelize.define("Example", {
-    text: DataTypes.STRING,
-    description: DataTypes.TEXT
+  var Post = sequelize.define("Post", {
+    title: {
+      type: DataTypes.TEXT,
+      len: [1, 160],
+      allowNull: false
+    },
+    body: {
+      type: DataTypes.TEXT,
+      len: [1, 255],
+      allowNull: false
+    }
   });
-  return Example;
+  return Post;
 };

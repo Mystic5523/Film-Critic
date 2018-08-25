@@ -9,6 +9,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       len: [1, 255],
       allowNull: false
+    },
+    rating: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
     }
   });
   Post.associate = function(models) {

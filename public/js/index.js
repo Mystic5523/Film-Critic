@@ -3,7 +3,22 @@ var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var username = $("#user_name_signup");
+var email = $("#email");
+var password = $("#password_signup");
 
+$(document).on("click", "#agree", signupData);
+
+$("#login").on("click", function (event) {
+  event.preventDefault();
+
+  var username = $("#user_name_login")
+    .val()
+    .trim();
+  var password = $("#password_login")
+    .val()
+    .trim();
+});
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
@@ -74,7 +89,7 @@ var handleFormSubmit = function(event) {
     return;
   }
 
-  API.saveExample(example).then(function() {
+  API.saveExample(example).then(function () {
     refreshExamples();
   });
 
@@ -109,3 +124,16 @@ $(document).on("click", "#reviews", function(event) {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+function signupData(event) {
+  event.preventDefault;
+  createUser({
+    username: username.val().trim(),
+    email: email.val().trim(),
+    password: password.val().trim()
+  });
+}
+
+function createUser(userInfo) {
+  $.post("/api/userdata", userInfo).then(getUserInfo);
+}

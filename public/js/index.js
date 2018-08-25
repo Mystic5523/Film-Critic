@@ -94,17 +94,17 @@ var handleDeleteBtnClick = function() {
   });
 };
 
-$(document).ready(function(){
-  $('.sidenav').sidenav();
+$(document).ready(function() {
+  $(".sidenav").sidenav();
 });
 
-$(document).ready(function(){
-  $('.modal').modal();
+$(document).ready(function() {
+  $(".modal").modal();
 });
 $(document).on("click", "#reviews", function(event) {
   event.preventDefault();
   $("#welcome").hide();
-  $("#reviews-list").show()
+  $("#reviews-list").show();
 });
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);

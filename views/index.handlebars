@@ -1,34 +1,126 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">FilmCritic!</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>
+        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text text-lighten-4 modal-trigger" href="#modal1" id="sign-up">Sign
+          Up!
+        </button>
+      </li>
+      <li>
+        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text text-lighten-4 modal-trigger" href="#modal2" id="login">Login
+        </button>
+      </li>
+      <li>
+        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text text-lighten-4 modal-trigger" href="#modal3" id="reviews">
+          View All Reviews
+        </button>
+      </li>
+    </ul>
+    <ul id="slide-out" class="sidenav">
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="images/office.jpg">
           </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
+
+        </div>
+      </li>
+      <li>
+        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text grey darken-3 text-lighten-4 modal-trigger" href="#modal1"
+          id="sign-up">
+          Sign Up!
+        </button>
+      </li>
+      <li>
+        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text grey darken-3 text-lighten-4 modal-trigger" href="#modal2"
+          id="login">
+          Login
+        </button>
+      </li>
+      <li>
+        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text grey darken-3 text-lighten-4 modal-trigger" href="#modal3"
+          id="reviews">
+          View All Reviews
+        </button>
+      </li>
+    </ul>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  </div>
+</nav>
+<div class="container">
+  <div class="row main" id="welcome">
+    <div class="col-8 offset-2">
+      <h1>{{msg}}</h1>
+    </div>
+  </div>
+  <div class="row main" id="reviews-list" style="display: none">
+    <div class="col-8 offset-2">
+      <h3>Examples:</h3>
+      <ul id="user-reviews" class="list-group">
+        {{#each examples}}
+        <li data-id="{{this.id}}" class="list-group-item">
+          <a href="reviews/{{this.id}}">{{this.text}}</a>
+          <button class="btn btn-danger float-right delete">ｘ</button>
+        </li>
+        {{/each}}
+      </ul>
     </div>
   </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-<script src="/js/index.js"></script>
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>New Account</h4>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="user_name_signup" type="text" class="validate">
+            <label for="user_name_signup">User Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password_signup" type="password" class="validate">
+            <label for="password_signup">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h4>Existing User Login!</h4>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="user_name_login" type="text" class="validate">
+            <label for="user_name_login">User Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password_login" type="password" class="validate">
+            <label for="password_login">Password</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Login</a>
+  </div>
+</div>

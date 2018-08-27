@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
   // Get references to page elements
   var $exampleText = $("#example-text");
   var $exampleDescription = $("#example-description");
@@ -12,13 +12,6 @@ $(document).ready(function () {
 
   $("#login").on("click", function(event) {
     event.preventDefault();
-
-    var username = $("#user_name_login")
-      .val()
-      .trim();
-    var password = $("#password_login")
-      .val()
-      .trim();
   });
   // The API object contains methods for each kind of request we'll make
   var API = {

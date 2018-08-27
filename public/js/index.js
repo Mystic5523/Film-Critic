@@ -10,8 +10,10 @@ $(document).ready(function() {
 
   $(document).on("click", "#agree", signupData);
 
+
   //Click event for the log in modal
   $(document).on("click", "#loginModal", loginData);
+
 
   // The API object contains methods for each kind of request we'll make
   var API = {

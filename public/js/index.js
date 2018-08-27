@@ -10,16 +10,9 @@ $(document).ready(function () {
 
   $(document).on("click", "#agree", signupData);
 
-  $("#login").on("click", function(event) {
-    event.preventDefault();
+  //Click event for the log in modal
+  $(document).on("click", "#loginModal", loginData);
 
-    var username = $("#user_name_login")
-      .val()
-      .trim();
-    var password = $("#password_login")
-      .val()
-      .trim();
-  });
   // The API object contains methods for each kind of request we'll make
   var API = {
     saveExample: function(example) {
@@ -135,7 +128,24 @@ $(document).ready(function () {
     });
   }
 
+  function loginData(event) {
+    event.preventDefault;
+    loginUser({
+      username: $("#user_name_login")
+        .val()
+        .trim(),
+      password: $("#password_login")
+        .val()
+        .trim()
+    });
+  }
+
   function createUser(userInfo) {
     $.post("/api/userdata", userInfo).then(getUserInfo);
+  }
+
+  //Function for checking the credentials against the database
+  function loginUser(userInfo) {
+    $.post("/api/logindata", userInfo).then(getUserInfo);
   }
 });

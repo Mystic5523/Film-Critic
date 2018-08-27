@@ -10,9 +10,11 @@ $(document).ready(function() {
 
   $(document).on("click", "#agree", signupData);
 
-  $("#login").on("click", function(event) {
-    event.preventDefault();
-  });
+
+  //Click event for the log in modal
+  $(document).on("click", "#loginModal", loginData);
+
+
   // The API object contains methods for each kind of request we'll make
   var API = {
     saveExample: function(example) {
@@ -115,9 +117,6 @@ $(document).ready(function() {
     $("#welcome").hide();
     $("#reviews-list").show();
   });
-  // Add event listeners to the submit and delete buttons
-  $submitBtn.on("click", handleFormSubmit);
-  $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
   function signupData(event) {
     event.preventDefault;
@@ -128,7 +127,27 @@ $(document).ready(function() {
     });
   }
 
+  function loginData(event) {
+    event.preventDefault;
+    loginUser({
+      username: $("#user_name_login")
+        .val()
+        .trim(),
+      password: $("#password_login")
+        .val()
+        .trim()
+    });
+    $("#welcome").hide();
+    $("#logged-in").show();
+    $("#reviews-list").hide();
+  }
+
   function createUser(userInfo) {
     $.post("/api/userdata", userInfo).then(getUserInfo);
+  }
+
+  //Function for checking the credentials against the database
+  function loginUser(userInfo) {
+    $.post("/api/logindata", userInfo).then(getUserInfo);
   }
 });

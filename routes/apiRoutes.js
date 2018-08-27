@@ -22,4 +22,21 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+
+  //Get User matched against database
+  app.post("/api/logindata", function(req) {
+    //console.log(req.body.username);
+    db.User.findOne({ where: { username: req.body.username } }).then(function(
+      data
+    ) {
+      //console.log(data);
+      console.log("Password is: " + data.dataValues.password);
+      var pw = data.dataValues.password;
+      if (pw === req.body.password) {
+        console.log("logged in");
+      } else {
+        console.log("invalid credentials");
+      }
+    });
+  });
 };

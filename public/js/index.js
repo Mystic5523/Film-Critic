@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
   // Get references to page elements
   var $exampleText = $("#example-text");
   var $exampleDescription = $("#example-description");

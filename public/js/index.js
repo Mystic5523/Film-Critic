@@ -115,9 +115,6 @@ $(document).ready(function() {
     $("#welcome").hide();
     $("#reviews-list").show();
   });
-  // Add event listeners to the submit and delete buttons
-  $submitBtn.on("click", handleFormSubmit);
-  $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
   function signupData(event) {
     event.preventDefault;
@@ -138,6 +135,9 @@ $(document).ready(function() {
         .val()
         .trim()
     });
+    $("#welcome").hide();
+    $("#logged-in").show();
+    $("#reviews-list").hide();
   }
 
   function createUser(userInfo) {

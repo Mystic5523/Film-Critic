@@ -6,7 +6,8 @@ module.exports = function(app) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.render("index", {
         msgHead: "Welcome!",
-        msg: "Thanks for visiting FilmCritic, please signup or login to post your own reviews.",
+        msg:
+          "Thanks for visiting FilmCritic, please signup or login to post your own reviews.",
         examples: dbExamples
       });
     });

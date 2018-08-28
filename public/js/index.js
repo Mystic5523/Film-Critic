@@ -129,14 +129,14 @@ $(document).ready(function() {
 
   function loginData(event) {
     event.preventDefault;
-    // loginUser({
-    //   username: $("#user_name_login")
-    //     .val()
-    //     .trim(),
-    //   password: $("#password_login")
-    //     .val()
-    //     .trim()
-    // });
+    loginUser({
+      username: $("#user_name_login")
+        .val()
+        .trim(),
+      password: $("#password_login")
+        .val()
+        .trim()
+    });
     $("#welcome").hide();
     $("#logged-in").show();
     $("#reviews-list").hide();

@@ -15,7 +15,7 @@
         </div>
       </li>
       <li>
-        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text text-lighten-4 modal-trigger" type="submit" name="action">Search!
+        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text text-lighten-4" type="submit" name="action">Search!
         </button>
       </li>
       <li>
@@ -28,20 +28,12 @@
         </button>
       </li>
       <li>
-        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text text-lighten-4 modal-trigger" href="#modal3" id="reviews">
+        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text text-lighten-4 modal-trigger" id="reviews">
           View All Reviews
         </button>
       </li>
     </ul>
     <ul id="slide-out" class="sidenav">
-      <li>
-        <div class="user-view">
-          <div class="background">
-            <img src="images/office.jpg">
-          </div>
-
-        </div>
-      </li>
       <li>
         <button class="waves-effect waves-orange lighten-3 btn-flat grey-text grey darken-3 text-lighten-4 modal-trigger" href="#modal1"
           id="sign-up">
@@ -60,19 +52,22 @@
         </button>
       </li>
       <li>
+        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text grey darken-3 text-lighten-4" type="submit" name="action">Search!
+        </button>
+      </li>
+      <li>
         <div class="center row">
           <div class="col s12 ">
-            <div class="row" id="topbarsearch">
-              <div class="input-field col s6 s12 white-text">
-                <i class="material-icons">search</i><input type="text" placeholder="" id="autocomplete-input" class="autocomplete grey-text">
+            <div class="row" id="sidenavsearch">
+              <div class="col s3">
+               <i class="material-icons">search</i>
+              </div>
+              <div class="input-field col s9 white-text">
+               <input type="text" placeholder="" id="autocomplete-input" class="autocomplete grey-text">
               </div>
             </div>
           </div>
         </div>
-      </li>
-      <li>
-        <button class="waves-effect waves-orange lighten-3 btn-flat grey-text text-lighten-4 modal-trigger" type="submit" name="action">Search!
-        </button>
       </li>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -187,7 +182,7 @@
           </div>
           <p class="range-field">
             Your Rating:
-            <input type="range" id="test5" min="0.0" max="10.0" />
+            <input type="range" id="test5" min="0.0" max="10.0" step="0.5"/>
           </p>
         </div>
       </form>

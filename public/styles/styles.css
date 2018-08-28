@@ -66,3 +66,15 @@ body {
 button {
   font-family: 'Julius Sans One', sans-serif;
 }
+
+.thumb {
+  margin-top: 100px;
+}
+
+.sidenav {
+  background-color: #feab68;
+}
+
+#sidenavsearch {
+  background-color: #424242;
+}

@@ -6,14 +6,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="/public/styles/styles.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
     <title>Film Critic</title>
 </head>
 
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">FilmCritic!</a>
+            <a href="/" class="brand-logo">FilmCritic!</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><i class="material-icons">search</i></li>
                 <li>
@@ -41,9 +41,9 @@
                     </button>
                 </li>
                 <li>
-                    <button class="waves-effect waves-orange lighten-3 btn-flat grey-text text-lighten-4 modal-trigger" id="reviews">
+                    <a href="/reviews" class="btn waves-effect waves-orange lighten-3 btn-flat grey-text text-lighten-4 modal-trigger" id="reviews">
                         View All Reviews
-                    </button>
+                    </a>
                 </li>
             </ul>
             <ul id="slide-out" class="sidenav">
@@ -60,9 +60,9 @@
                     </button>
                 </li>
                 <li>
-                    <button class="waves-effect waves-orange lighten-3 btn-flat grey-text grey darken-3 text-lighten-4 modal-trigger" id="reviews">
+                    <a href="/reviews" class="btn waves-effect waves-orange lighten-3 btn-flat grey-text text-lighten-4 modal-trigger" id="reviews">
                         View All Reviews
-                    </button>
+                    </a>
                 </li>
                 <li>
                     <button class="waves-effect waves-orange lighten-3 btn-flat grey-text grey darken-3 text-lighten-4" type="submit" name="action">Search!
@@ -90,7 +90,9 @@
         <div class="row main" id="welcome">
             <div class="col-8 offset-2">
                 <h1>Welcome</h1>
-                <p>Thank you for visiting FilmCritic, please signup or login in order to write a review or select view all reviews.</p>
+                <p>Thank you for visiting FilmCritic, please signup or login in order to write a review or select view all
+                    reviews.
+                </p>
             </div>
         </div>
         <div class="row main" id="reviews-list" style="display: none">
@@ -212,4 +214,4 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-<script src="/public/js/index.js"></script>
+<script src="/js/index.js"></script>

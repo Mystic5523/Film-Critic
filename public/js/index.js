@@ -107,12 +107,6 @@ $(document).ready(function() {
     $(".modal").modal();
   });
 
-  $(document).on("click", "#reviews", function(event) {
-    event.preventDefault();
-    $("#welcome").hide();
-    $("#reviews-list").show();
-  });
-
   function signupData(event) {
     event.preventDefault;
     createUser({

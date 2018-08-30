@@ -1,20 +1,36 @@
+$colors: (
+  primary: #424242,
+  primary-light: lighten(#424242, 20%),
+  text: #f5f5f5
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name)
+};
+
+$desktop: 840px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
 html {
   height: 100%;
   width: 100%;
 }
-
 body {
   height: 100%;
   width: 100%;
-  color: #f5f5f5;
+  color: color(text);
   background: url(/assets/images/film.jpg);
   background-size: cover;
   font-family: 'Roboto', sans-serif;
 }
-
-#textboxfour {
+#textboxfour{
   /* padding: 200px; */
-  margin: 0;
+  margin: 0;  
 }
 
 .list-group-item {
@@ -30,48 +46,49 @@ body {
   text-align: center;
   margin: 0;
 }
-
 .parallax-container {
   height: 400px;
-}
 
-.parallax-container p {
-  font-size: 18px;
-}
+  p {
+    font-size: 18px;
 
-@media (min-width: 840px) {
-  .parallax-container p {
-    font-size: 12px;
+    @include desktop {
+      font-size: 12px;
+    }
   }
-}
 
-@media (min-width: 840px) {
-  .parallax-container {
+  @include desktop {
     background-attachment: fixed;
   }
 }
+// @media (max-width: 568) {
+//   .parallax{
+//     background-attachment: scroll;
+//   }
+  
+// }
 
 .nav-wrapper {
-  background-color: #424242;
+  background-color: color(primary);
   font-family: 'Julius Sans One', sans-serif;
 }
 
 .main {
-  background-color: #424242;
+  background-color: color(primary);
   margin-top: 250px;
 }
 
 .modal {
-  background-color: #424242;
+  background-color: color(primary);
   font-family: 'Julius Sans One', sans-serif;
 }
 
 .input-field label {
-  color: #f5f5f5;
+  color: color(text);
 }
 
 .active label {
-  color: #f5f5f5;
+  color: color(text)
 }
 
 button {
@@ -83,10 +100,9 @@ button {
 }
 
 .sidenav {
-  background-color: #757575;
+  background-color: color(primary-light);
 }
 
 #sidenavsearch {
-  background-color: #424242;
+  background-color: color(primary);
 }
-/*# sourceMappingURL=styles.css.map */

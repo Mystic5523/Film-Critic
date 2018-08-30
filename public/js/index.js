@@ -4,8 +4,7 @@ $(document).ready(function() {
   var password = $("#password_signup");
 
   $(document).on("click", "#agree", signupData);
-  $(document).on("")
-
+  $(document).on("");
 
   //Click event for the log in modal
   $(document).on("click", "#loginModal", loginData);

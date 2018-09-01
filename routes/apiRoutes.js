@@ -1,10 +1,19 @@
 var db = require("../models");
 var userInfo = require("../data/userInfo");
+var allPosts = require("../data/userInfo");
 
 module.exports = function(app) {
+  app.get("/api/allposts", function(req, res) {
+    db.Post.findAll({}).then(function(data1) {
+      res.json(data1);
+      //console.log(data1);
+    });
+  });
+
   app.get("/api/loggedin", function(req, res) {
     db.Post.findAll({ where: { UserId: userInfo } }).then(function(data) {
       res.json(data);
+      //console.log(data);
     });
   });
 

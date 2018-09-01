@@ -91,10 +91,49 @@
         </div>
     </nav>
     <div class="container">
-        <div class="section grey darken-3 main">
-            <div class="row container" id="textboxfour">
-                <h2 class="header grey-text text-lighten-4">Logged in! <i class="material-icons">mood_bad</i></h2>
-                <p class="grey-text text-lighten-4">Youre logged in!</p>
+        <div class="row main" id="logged-in">
+            <div class="col-8 offset-2">
+                <h3>Thank you for logging in!</h3>
+                <p>Would you like to review a new film or view your reviewed films?</p>
+                <button class="waves-effect waves-orange lighten-3 btn-flat grey-text grey darken-3 text-lighten-4 modal-trigger" href="#modal3"
+                    id="review-modal-trigger">
+                    Review Film
+                </button>
+                <button class="waves-effect waves-orange lighten-3 btn-flat grey-text grey darken-3 text-lighten-4 modal-trigger" id="my-reviews-trigger">
+                    View My Reviews
+                </button>
+            </div>
+        </div>
+
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <h4>New Review</h4>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="film-name" type="text" class="validate">
+                                <label for="film-name">Film Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="review-text" class="materialize-textarea"></textarea>
+                                <label for="review-text">Review</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="range-field">
+                                Your Rating:
+                                <input type="range" id="test5" min="0.0" max="10.0" step="0.5" />
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a id="cancel" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                <a id="submit-review" class="modal-close waves-effect waves-green btn-flat">Submit Review</a>
             </div>
         </div>
     </div>

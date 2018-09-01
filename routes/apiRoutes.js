@@ -1,6 +1,13 @@
 var db = require("../models");
+var userInfo = require("../data/userInfo");
 
 module.exports = function(app) {
+  app.get("/api/loggedin", function(req, res) {
+    db.Post.findAll({ where: { UserId: userInfo } }).then(function(data) {
+      res.json(data);
+    });
+  });
+
   // Get all examples
   app.get("/api/examples", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
@@ -24,7 +31,7 @@ module.exports = function(app) {
   });
 
   //Get User matched against database
-  app.post("/api/logindata", function(req) {
+  app.post("/api/logindata", function(req, res) {
     //console.log(req.body.username);
     db.User.findOne({ where: { username: req.body.username } }).then(function(
       data
@@ -34,6 +41,7 @@ module.exports = function(app) {
       var pw = data.dataValues.password;
       if (pw === req.body.password) {
         console.log("logged in");
+        userInfo.splice(0, 2, data.dataValues.id);
       } else {
         console.log("invalid credentials");
       }

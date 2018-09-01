@@ -1,26 +1,26 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function(sequelize, Sequelize) {
   var Post = sequelize.define("Post", {
     title: {
-      type: DataTypes.TEXT,
+      type: Sequelize.STRING,
       len: [1, 160],
       allowNull: false
     },
     body: {
-      type: DataTypes.TEXT,
+      type: Sequelize.STRING,
       len: [1, 255],
       allowNull: false
     },
     rating: {
-      type: DataTypes.DECIMAL,
+      type: Sequelize.DECIMAL,
       allowNull: false
     }
   });
-  Post.associate = function(models) {
-    Post.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+  // Post.associate = function(models) {
+  //   Post.belongsTo(models.User, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
   return Post;
 };

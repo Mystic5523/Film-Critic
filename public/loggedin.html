@@ -7,10 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-<script src="/js/index.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
     <title>Film Critic</title>
 </head>
 
@@ -140,59 +137,62 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-      
-              <!-- Current Tables in Use -->
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title"></h4>
+
+                <!-- Current Tables in Use -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"></h4>
+                    </div>
+                    <div class="panel-body" id="tableSection">
+                    </div>
                 </div>
-                <div class="panel-body" id="tableSection">
-                </div>
-              </div>
-    </div>
+            </div>
 </body>
 
 <script type="text/javascript">
     function Query() {
-      console.log("this is running");
+        console.log("this is running");
 
-      // Here we get the location of the root page.
-      // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
-      var currentURL = window.location.origin;
+        // Here we get the location of the root page.
+        // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+        var currentURL = window.location.origin;
 
-      // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-      $.ajax({ url: currentURL + "/api/loggedin", method: "GET" })
-      .then(function(data) {
+        // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+        $.ajax({ url: currentURL + "/api/loggedin", method: "GET" })
+            .then(function (data) {
 
-        // Here we are logging the URL so we have access to it for troubleshooting
-        console.log("------------------------------------");
-        console.log("URL: " + currentURL + "/api/loggedin");
-        console.log("------------------------------------");
-       
+                // Here we are logging the URL so we have access to it for troubleshooting
+                console.log("------------------------------------");
+                console.log("URL: " + currentURL + "/api/loggedin");
+                console.log("------------------------------------");
 
-        // Here we then log the NYTData to console, where it will show up as an object.
-        console.log(data);
-        console.log("------------------------------------");
 
-        for (var i = 0; i < data.length; i++) {
-          console.log(data[i])
-          // Create the HTML Well (Section) and Add the table content for each reserved table
-          //$(".panel-title").append(data[i]);
-          var tableSection = $("<div>");
-            tableSection.addClass("well");
-            tableSection.attr("id", "tableWell-" + i + 1);
-            $("#tableSection").append(tableSection);
+                // Here we then log the NYTData to console, where it will show up as an object.
+                console.log(data);
+                console.log("------------------------------------");
 
-            var tableNumber = i + 1;
+                for (var i = 0; i < data.length; i++) {
+                    console.log(data[i])
+                    // Create the HTML Well (Section) and Add the table content for each reserved table
+                    //$(".panel-title").append(data[i]);
+                    var tableSection = $("<div>");
+                    tableSection.addClass("well");
+                    tableSection.attr("id", "tableWell-" + i + 1);
+                    $("#tableSection").append(tableSection);
 
-            // Then display the remaining fields in the HTML (Section Name, Date, URL)
-            $("#tableWell-" + i + 1).append("<h4><span class='label label-primary'>" + data[i].title + " " + data[i].body + " " + data[i].rating + " " + data[i].createdAt +"</h4>");
-        }
-      });
+                    var tableNumber = i + 1;
+
+                    // Then display the remaining fields in the HTML (Section Name, Date, URL)
+                    $("#tableWell-" + i + 1).append("<h4><span class='label label-primary'>" + data[i].title + " " + data[i].body + " " + data[i].rating + " " + data[i].createdAt + "</h4>");
+                }
+            });
     }
-    $("#my-reviews-trigger").click(function() {
+    $("#my-reviews-trigger").click(function () {
         Query();
     }); 
-  </script>
-</html>
+</script>
 
+</html>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script src="/js/index.js"></script>

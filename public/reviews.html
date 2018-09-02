@@ -66,16 +66,7 @@
         </div>
     </nav>
     <div class="container">
-        <div class="section grey darken-3 main" id="reviews-output">
-        </div>
-            <!-- Current Tables in Use -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"></h4>
-                </div>
-                <div class="panel-body" id="postSection">
-                </div>
-            </div>
+        <div class="section grey darken-3 main" id="reviewsoutput">
         </div>
     </div>
 </body>
@@ -88,7 +79,7 @@
 <script>
 //Function for checking the credentials against the database
 function Query() {
-    event.preventDefault;
+   // event.preventDefault;
         console.log("this is running");
 
         // Here we get the location of the root page.
@@ -105,30 +96,27 @@ function Query() {
                 console.log("------------------------------------");
 
 
-                // Here we then log the NYTData to console, where it will show up as an object.
+                // Here we then log the data to console, where it will show up as an object.
                 console.log(data1);
                 console.log("------------------------------------");
 
+                $("#reviewsoutput").append("<h4>All Reviews:</h4>");
                 for (var i = 0; i < data1.length; i++) {
                     console.log(data1[i])
-                    // Create the HTML Well (Section) and Add the table content for each reserved table
-                    //$(".panel-title").append(data[i]);
-                    var postSection = $("<div>");
-                    postSection.addClass("well");
-                    postSection.attr("id", "reviews-output-" + i + 1);
-                    $("#postSection").append(postSection);
-
-                    var tableNumber = i + 1;
+                    // Create the HTML Well (Section) and Add the table content for each post
+                    var reviewsoutput = $("<div>");
+                    reviewsoutput.addClass("well");
+                    reviewsoutput.attr("id", "reviews-output-" + i + 1);
+                    $("#reviewsoutput").append(reviewsoutput);
 
                     // Then display the remaining fields in the HTML (Section Name, Date, URL)
-                    $("#reviews-output-" + i + 1).append("<h4><span class='label label-primary'>" + data1[i].title + " " + data1[i].body + " " + data1[i].rating + " " + data1[i].createdAt + "</h4>");
+                    $("#reviews-output-" + i + 1).append("<h6><span class='label label-primary'>" + data1[i].title + " " + data1[i].body + " " + data1[i].rating + " " + data1[i].createdAt + "</h6>");
                     }
             });
     }
-    $("#reviews").click(function(event) {
-        event.preventDefault;
+    $(document).ready(function() {
         Query();
-        $("#postSection").empty();
+        $("#reviewsoutput").empty();
         return false;
     }); 
 </script>

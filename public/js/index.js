@@ -2,12 +2,17 @@ $(document).ready(function() {
   var username = $("#user_name_signup");
   var email = $("#email");
   var password = $("#password_signup");
+  var title = $("#film-name");
+  var body = $("#review-text");
+  var rating = $("#test5");
 
   $(document).on("click", "#agree", signupData);
   $(document).on("");
 
   //Click event for the log in modal
   $(document).on("click", "#loginModal", loginData);
+
+  $(document).on("click", "#submit-review", postData);
 
   $(document).ready(function() {
     $(".sidenav").sidenav();
@@ -38,12 +43,26 @@ $(document).ready(function() {
         .trim()
     });
   }
+  
+  function postData(event) {
+    event.preventDefault;
+    createPost({
+      title: title.val().trim(),
+      body: body.val(),
+      rating: rating.val()
+    });
+  }
+  
   //Function for checking the credentials against the database
   function loginUser(userInfo) {
-    $.post("/api/logindata", userInfo).then(getUserInfo);
+    $.post("/api/logindata", userInfo);
   }
 
   function createUser(userInfo) {
-    $.post("/api/userdata", userInfo).then(getUserInfo);
+    $.post("/api/userdata", userInfo);
+  }
+  function createPost(postInfo) {
+    console.log(postInfo);
+    $.post("/api/posts", postInfo);
   }
 });

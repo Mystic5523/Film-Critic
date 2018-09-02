@@ -54,9 +54,11 @@ module.exports = function(app) {
       var pw = data.dataValues.password;
       if (pw === req.body.password) {
         console.log("logged in");
+        res.json(true);
         userInfo.splice(0, 2, data.dataValues.id);
       } else {
         console.log("invalid credentials");
+        res.json(false);
       }
     });
   });

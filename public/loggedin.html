@@ -143,13 +143,23 @@
                     <div class="panel-heading">
                         <h4 class="panel-title"></h4>
                     </div>
-                    <div class="panel-body" id="tableSection">
+                    <div class="panel-body" id="postSection">
                     </div>
                 </div>
             </div>
 </body>
 
+
+
+</html>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script src="/js/index.js"></script>
 <script type="text/javascript">
+function deletePost(id) {
+    console.log("click")
+  }
+
     function Query() {
         console.log("this is running");
 
@@ -175,24 +185,26 @@
                     console.log(data[i])
                     // Create the HTML Well (Section) and Add the table content for each reserved table
                     //$(".panel-title").append(data[i]);
-                    var tableSection = $("<div>");
-                    tableSection.addClass("well");
-                    tableSection.attr("id", "tableWell-" + i + 1);
-                    $("#tableSection").append(tableSection);
+                    var postSection = $("<div>");
+                    postSection.addClass("well");
+                    postSection.attr("id", "tableWell-" + i + 1);
+                    $("#postSection").append(postSection);
 
+                    var deleteBtn = $("<button>");
+                    deleteBtn.text("x");
+                    deleteBtn.addClass("delete btn btn-danger");
+                    deleteBtn.attr("id","deletePost")
                     var tableNumber = i + 1;
 
                     // Then display the remaining fields in the HTML (Section Name, Date, URL)
                     $("#tableWell-" + i + 1).append("<h4><span class='label label-primary'>" + data[i].title + " " + data[i].body + " " + data[i].rating + " " + data[i].createdAt + "</h4>");
-                }
+                        postSection.append(deleteBtn);
+                    }
             });
     }
     $("#my-reviews-trigger").click(function () {
         Query();
+        $("#postSection").empty();
     }); 
+    $(document).on("click", "#deletePost", deletePost);
 </script>
-
-</html>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-<script src="/js/index.js"></script>

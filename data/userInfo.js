@@ -6,6 +6,8 @@
 // ===============================================================================
 
 var userArray = [];
+var allPosts = [];
 
 // Note how we export the array. This makes it accessible to other files using require.
 module.exports = userArray;
+module.exports = allPosts;

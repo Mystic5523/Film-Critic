@@ -43,6 +43,7 @@ $(document).ready(function() {
         .trim()
     });
   }
+  
   function postData(event) {
     event.preventDefault;
     createPost({
@@ -51,6 +52,7 @@ $(document).ready(function() {
       rating: rating.val()
     });
   }
+  
   //Function for checking the credentials against the database
   function loginUser(userInfo) {
     $.post("/api/logindata", userInfo);

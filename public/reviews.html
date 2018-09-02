@@ -68,6 +68,15 @@
     <div class="container">
         <div class="section grey darken-3 main" id="reviews-output">
         </div>
+            <!-- Current Tables in Use -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"></h4>
+                </div>
+                <div class="panel-body" id="postSection">
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
@@ -76,3 +85,50 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 <script src="/js/index.js"></script>
+<script>
+//Function for checking the credentials against the database
+function Query() {
+    event.preventDefault;
+        console.log("this is running");
+
+        // Here we get the location of the root page.
+        // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+        var currentURL = window.location.origin;
+
+        // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+        $.ajax({ url: currentURL + "/api/allposts", method: "GET" })
+            .then(function (data1) {
+
+                // Here we are logging the URL so we have access to it for troubleshooting
+                console.log("------------------------------------");
+                console.log("URL: " + currentURL + "/api/allposts");
+                console.log("------------------------------------");
+
+
+                // Here we then log the NYTData to console, where it will show up as an object.
+                console.log(data1);
+                console.log("------------------------------------");
+
+                for (var i = 0; i < data1.length; i++) {
+                    console.log(data1[i])
+                    // Create the HTML Well (Section) and Add the table content for each reserved table
+                    //$(".panel-title").append(data[i]);
+                    var postSection = $("<div>");
+                    postSection.addClass("well");
+                    postSection.attr("id", "reviews-output-" + i + 1);
+                    $("#postSection").append(postSection);
+
+                    var tableNumber = i + 1;
+
+                    // Then display the remaining fields in the HTML (Section Name, Date, URL)
+                    $("#reviews-output-" + i + 1).append("<h4><span class='label label-primary'>" + data1[i].title + " " + data1[i].body + " " + data1[i].rating + " " + data1[i].createdAt + "</h4>");
+                    }
+            });
+    }
+    $("#reviews").click(function(event) {
+        event.preventDefault;
+        Query();
+        $("#postSection").empty();
+        return false;
+    }); 
+</script>

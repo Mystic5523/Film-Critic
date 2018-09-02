@@ -156,6 +156,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 <script src="/js/index.js"></script>
 <script type="text/javascript">
+function deletePost(id) {
+    console.log("click")
+  }
+
     function Query() {
         console.log("this is running");
 
@@ -189,6 +193,7 @@
                     var deleteBtn = $("<button>");
                     deleteBtn.text("x");
                     deleteBtn.addClass("delete btn btn-danger");
+                    deleteBtn.attr("id","deletePost")
                     var tableNumber = i + 1;
 
                     // Then display the remaining fields in the HTML (Section Name, Date, URL)
@@ -201,4 +206,5 @@
         Query();
         $("#postSection").empty();
     }); 
+    $(document).on("click", "#deletePost", deletePost);
 </script>

@@ -10,7 +10,13 @@ $(document).ready(function() {
   $(document).on("");
 
   //Click event for the log in modal
-  $(document).on("click", "#loginModal", loginData);
+  $(document).on("click", "#loginModal", myFunction);
+
+  function myFunction(event) {
+    event.preventDefault();
+    loginData();
+    setTimeout(Query1, 1500);
+  }
 
   $(document).on("click", "#submit-review", postData);
 
@@ -32,8 +38,7 @@ $(document).ready(function() {
   }
 
   //Function for getting thwe username and password when they login
-  function loginData(event) {
-    event.preventDefault;
+  function loginData() {
     loginUser({
       username: $("#user_name_login")
         .val()
@@ -43,7 +48,7 @@ $(document).ready(function() {
         .trim()
     });
   }
-  
+
   function postData(event) {
     event.preventDefault;
     createPost({
@@ -52,7 +57,7 @@ $(document).ready(function() {
       rating: rating.val()
     });
   }
-  
+
   //Function for checking the credentials against the database
   function loginUser(userInfo) {
     $.post("/api/logindata", userInfo);
@@ -61,8 +66,26 @@ $(document).ready(function() {
   function createUser(userInfo) {
     $.post("/api/userdata", userInfo);
   }
+
   function createPost(postInfo) {
     console.log(postInfo);
     $.post("/api/posts", postInfo);
+  }
+
+  function Query1() {
+    var currentURL = window.location.origin;
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.ajax({ url: currentURL + "/api/loggedin1", method: "GET" }).then(function(
+      userInfo
+    ) {
+      console.log(userInfo);
+      if (userInfo == "") {
+        $("#login").click();
+        $(".modal-content").css("color", "red");
+        $(".modal-content").prepend("<h4>Invalid Credentials! Try Again!<h4>");
+      } else {
+        window.location.href = "/loggedin";
+      }
+    });
   }
 });

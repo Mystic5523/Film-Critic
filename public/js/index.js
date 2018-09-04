@@ -79,7 +79,7 @@ $(document).ready(function() {
       userInfo
     ) {
       console.log(userInfo);
-      if (userInfo == "") {
+      if (userInfo === "") {
         $("#login").click();
         $(".modal-content").css("color", "red");
         $(".modal-content").prepend("<h4>Invalid Credentials! Try Again!<h4>");

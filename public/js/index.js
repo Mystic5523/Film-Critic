@@ -49,14 +49,7 @@ $(document).ready(function() {
     });
   }
 
-  function postData(event) {
-    event.preventDefault;
-    createPost({
-      title: title.val().trim(),
-      body: body.val(),
-      rating: rating.val()
-    });
-  }
+ 
 
   //Function for checking the credentials against the database
   function loginUser(userInfo) {
@@ -67,10 +60,7 @@ $(document).ready(function() {
     $.post("/api/userdata", userInfo);
   }
 
-  function createPost(postInfo) {
-    console.log(postInfo);
-    $.post("/api/posts", postInfo);
-  }
+
 
   function Query1() {
     var currentURL = window.location.origin;
@@ -79,13 +69,43 @@ $(document).ready(function() {
       userInfo
     ) {
       console.log(userInfo);
+      userId = userInfo;
       if (userInfo === "") {
         $("#login").click();
         $(".modal-content").css("color", "red");
         $(".modal-content").prepend("<h4>Invalid Credentials! Try Again!<h4>");
       } else {
         window.location.href = "/loggedin";
+        return userInfo;
       }
+    });
+  }
+
+  function postData(event) {
+    var currentURL = window.location.origin;
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.ajax({ url: currentURL + "/api/loggedin1", method: "GET" }).then(function(
+      userInfo
+    ) {
+    event.preventDefault;
+    createPost({
+      title: title.val().trim(),
+      body: body.val(),
+      rating: rating.val(),
+      UserId: userInfo[0]
+    });
+  });
+  }
+
+  function createPost(postInfo) {
+    var currentURL = window.location.origin;
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    $.ajax({ url: currentURL + "/api/loggedin1", method: "GET" }).then(function(
+      userInfo
+    ) {
+    console.log(postInfo);
+    console.log(userInfo[0]);
+    $.post("/api/posts", postInfo);
     });
   }
 });

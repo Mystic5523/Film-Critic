@@ -110,7 +110,7 @@ function Query() {
                     $("#reviewsoutput").append(reviewsoutput);
 
                     // Then display the remaining fields in the HTML (Section Name, Date, URL)
-                    $("#reviews-output-" + i + 1).append("<h6><span class='label label-primary'>" + data1[i].title + " " + data1[i].body + " " + data1[i].rating + " " + data1[i].createdAt + "</h6>");
+                    $("#reviews-output-" + i + 1).append("<h4><span class='label label-primary' style='color:AntiqueWhite'>" + data1[i].title + " </h4>" + "<h5>" + data1[i].body + " </h5>" + "<h6 style='color:BurlyWood'>" + data1[i].rating + " </h6>" + "<br>" + "<p style='font-size:10px'>" + data1[i].createdAt + "<br> <br>" + "</p>");
                     }
             });
     }

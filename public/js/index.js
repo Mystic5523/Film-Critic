@@ -49,8 +49,6 @@ $(document).ready(function() {
     });
   }
 
- 
-
   //Function for checking the credentials against the database
   function loginUser(userInfo) {
     $.post("/api/logindata", userInfo);
@@ -59,8 +57,6 @@ $(document).ready(function() {
   function createUser(userInfo) {
     $.post("/api/userdata", userInfo);
   }
-
-
 
   function Query1() {
     var currentURL = window.location.origin;
@@ -87,14 +83,14 @@ $(document).ready(function() {
     $.ajax({ url: currentURL + "/api/loggedin1", method: "GET" }).then(function(
       userInfo
     ) {
-    event.preventDefault;
-    createPost({
-      title: title.val().trim(),
-      body: body.val(),
-      rating: rating.val(),
-      UserId: userInfo[0]
+      event.preventDefault;
+      createPost({
+        title: title.val().trim(),
+        body: body.val(),
+        rating: rating.val(),
+        UserId: userInfo[0]
+      });
     });
-  });
   }
 
   function createPost(postInfo) {
@@ -103,9 +99,9 @@ $(document).ready(function() {
     $.ajax({ url: currentURL + "/api/loggedin1", method: "GET" }).then(function(
       userInfo
     ) {
-    console.log(postInfo);
-    console.log(userInfo[0]);
-    $.post("/api/posts", postInfo);
+      console.log(postInfo);
+      console.log(userInfo[0]);
+      $.post("/api/posts", postInfo);
     });
   }
 });

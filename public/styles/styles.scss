@@ -1,7 +1,8 @@
 $colors: (
   primary: #424242,
   primary-light: lighten(#424242, 20%),
-  text: #f5f5f5
+  text: #f5f5f5,
+  flicker: rgba(255, 153, 0, 1)
 );
 
 @function color($color-name) {
@@ -24,7 +25,7 @@ body {
   height: 100%;
   width: 100%;
   color: color(text);
-  background: url(/public/assets/images/film.jpg);
+  background: url(/assets/images/film.jpg);
   background-size: cover;
   font-family: 'Roboto', sans-serif;
 }
@@ -105,4 +106,63 @@ button {
 
 #sidenavsearch {
   background-color: color(primary);
+}
+
+.brand-logo {
+  animation: text-flicker 3s linear 3;
+
+  @keyframes text-flicker {
+    0% {
+      opacity:0.1;
+      text-shadow: 0px 0px 29px color(flicker);
+    }
+    
+    2% {
+      opacity:1;
+      text-shadow: 0px 0px 29px color(flicker);
+    }
+    8% {
+      opacity:0.1;
+      text-shadow: 0px 0px 29px color(flicker);
+    }
+    9% {
+      opacity:1;
+      text-shadow: 0px 0px 29px color(flicker);
+    }
+    12% {
+      opacity:0.1;
+      text-shadow: 0px 0px color(flicker);
+    }
+    20% {
+      opacity:1;
+      text-shadow: 0px 0px 29px color(flicker)
+    }
+    25% {
+      opacity:0.3;
+      text-shadow: 0px 0px 29px color(flicker)
+    }
+    30% {
+      opacity:1;
+      text-shadow: 0px 0px 29px color(flicker)
+    }
+    
+    70% {
+      opacity:0.7;
+      text-shadow: 0px 0px 29px color(flicker)
+    }
+    
+    72% {
+      opacity:0.2;
+      text-shadow:0px 0px 29px color(flicker)
+    }
+    
+    77% {
+      opacity:.9;
+      text-shadow: 0px 0px 29px color(flicker)
+    }
+    100% {
+      opacity:.9;
+      text-shadow: 0px 0px 29px color(flicker)
+    }
+  }
 }

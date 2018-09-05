@@ -1,6 +1,6 @@
 var db = require("../models");
 var userInfo = require("../data/userInfo");
-var allPosts = require("../data/userInfo");
+// var allPosts = require("../data/userInfo");
 
 module.exports = function(app) {
   app.get("/api/allposts", function(req, res) {
@@ -35,7 +35,7 @@ module.exports = function(app) {
   });
 
   //Get User matched against database
-  app.post("/api/logindata", function(req, res) {
+  app.post("/api/logindata", function(req) {
     db.User.findOne({ where: { username: req.body.username } }).then(function(
       data
     ) {

@@ -201,10 +201,10 @@
 
     // This function constructs a post's HTML
     function createNewRow(post) {
-    var newPostCard = $("<div>");
-    newPostCard.addClass("card");
+    var newPostCard = $("<div style='padding:1em'>");
+    newPostCard.addClass("card grey darken-3");
     var newPostCardHeading = $("<div>");
-    newPostCardHeading.addClass("card-header");
+    newPostCardHeading.addClass("card-title");
     var PostId = post.id;
     console.log(PostId);
     var deleteBtn = $("<button>");
@@ -214,11 +214,11 @@
     //var editBtn = $("<button>");
     //editBtn.text("EDIT");
     //editBtn.addClass("edit btn btn-default");
-    var newPostTitle = $("<h2>");
+    var newPostTitle = $("<h2 style='color:AntiqueWhite'>");
     var newPostDate = $("<small>");
     var newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");
-    var newPostBody = $("<p>");
+    var newPostBody = $("<h5>");
     newPostTitle.text(post.title + " ");
     newPostBody.text(post.body);
     var formattedDate = new Date(post.createdAt);

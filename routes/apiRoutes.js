@@ -15,12 +15,6 @@ module.exports = function(app) {
     });
   });
 
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
   app.post("/api/posts", function(req, res) {
     db.Post.create(req.body).then(function(dbPost) {
       res.json(dbPost);
@@ -33,11 +27,10 @@ module.exports = function(app) {
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    //prettier-ignore
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  app.delete("/api/loggedin/:id", function(req, res) {
+    // We just have to specify which todo we want to destroy with "where"
+    db.Post.destroy({ where: { id: req.params.id } }).then(function(dbPost) {
+      res.json(dbPost);
     });
   });
 

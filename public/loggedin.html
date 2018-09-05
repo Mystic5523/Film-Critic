@@ -154,70 +154,106 @@
 </html>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
 <script src="/js/index.js"></script>
 <script type="text/javascript">
-function deletePost(id) {
-    console.log("click")
-  }
-
-    function Query() {
-        console.log("this is running");
-
-        // Here we get the location of the root page.
-        // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
-        var currentURL = window.location.origin;
-
-        // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-        $.ajax({ url: currentURL + "/api/loggedin", method: "GET" })
-            .then(function (data) {
-
-                // Here we are logging the URL so we have access to it for troubleshooting
-                console.log("------------------------------------");
-                console.log("URL: " + currentURL + "/api/loggedin");
-                console.log("------------------------------------");
-
-
-                // Here we then log the NYTData to console, where it will show up as an object.
-                console.log(data);
-                console.log("------------------------------------");
-
-                for (var i = 0; i < data.length; i++) {
-                    console.log(data[i])
-                    // Create the HTML Well (Section) and Add the table content for each reserved table
-                    //$(".panel-title").append(data[i]);
-                    var postSection = $("<div>");
-                    postSection.addClass("well");
-                    postSection.attr("id", "tableWell-" + i + 1);
-                    $("#postSection").append(postSection);
-
-                    var deleteBtn = $("<button>");
-                    deleteBtn.text("x");
-                    deleteBtn.addClass("delete btn btn-danger");
-                    deleteBtn.attr("id","deletePost")
-                    var tableNumber = i + 1;
-
-                    // Then display the remaining fields in the HTML (Section Name, Date, URL)
-                    $("#tableWell-" + i + 1).append("<h4><span class='label label-primary'>" + data[i].title + " " + data[i].body + " " + data[i].rating + " " + data[i].createdAt + "</h4>");
-                        postSection.append(deleteBtn);
-                    }
-            });
-    }
+   //$(document).ready(function() {
+      // blogContainer holds all of our posts
+    
     $("#my-reviews-trigger").click(function () {
-        Query();
-        $("#postSection").empty();
-    }); 
-    $(document).on("click", "#deletePost", deletePost);
-//     $(document).ready(function() {
-   
-// var currentURL = window.location.origin;
-// // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-// $.ajax({ url: currentURL + "/api/loggedin1", method: "GET" })
-//     .then(function (userInfo) {
-//       // console.log(userInfo)
-//        if (userInfo == ""){
-//         window.location.href = "/";
-//            //alert("empty")
-//        }
-//     });
-// });
+      var blogContainer = $("#postSection");
+      var posts;
+      $(document).on("click", "button.delete", deletePost);  
+    // This function grabs posts from the database and updates the view
+    function getPosts() {
+        var currentURL = window.location.origin;
+        $.ajax({ url: currentURL + "/api/loggedin", method: "GET" })
+        .then(function (data) {
+          console.log("this is running");
+          posts = data;
+          console.log("------------------------------------");
+          console.log("URL: " + currentURL + "/api/loggedin");
+          console.log("------------------------------------");
+          console.log(data);
+          console.log("------------------------------------");
+          if (!posts || !posts.length) {
+            displayEmpty();
+          }
+          else {
+            initializeRows();
+          }
+        });
+    }
+
+    // Getting the initial list of posts
+    getPosts();
+    // InitializeRows handles appending all of our constructed post HTML inside
+    // blogContainer
+    function initializeRows() {
+      blogContainer.empty();
+      var postsToAdd = [];
+      for (var i = 0; i < posts.length; i++) {
+        postsToAdd.push(createNewRow(posts[i]));
+      }
+      blogContainer.append(postsToAdd);
+    }
+
+    // This function constructs a post's HTML
+    function createNewRow(post) {
+    var newPostCard = $("<div>");
+    newPostCard.addClass("card");
+    var newPostCardHeading = $("<div>");
+    newPostCardHeading.addClass("card-header");
+    var PostId = post.id;
+    console.log(PostId);
+    var deleteBtn = $("<button>");
+    deleteBtn.text("x");
+    deleteBtn.addClass("delete btn btn-danger");
+    deleteBtn.attr("id", PostId);
+    //var editBtn = $("<button>");
+    //editBtn.text("EDIT");
+    //editBtn.addClass("edit btn btn-default");
+    var newPostTitle = $("<h2>");
+    var newPostDate = $("<small>");
+    var newPostCardBody = $("<div>");
+    newPostCardBody.addClass("card-body");
+    var newPostBody = $("<p>");
+    newPostTitle.text(post.title + " ");
+    newPostBody.text(post.body);
+    var formattedDate = new Date(post.createdAt);
+    formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
+    newPostDate.text(formattedDate);
+    newPostTitle.append(newPostDate);
+    newPostCardHeading.append(deleteBtn);
+    //newPostCardHeading.append(editBtn);
+    newPostCardHeading.append(newPostTitle);
+    newPostCardBody.append(newPostBody);
+    newPostCard.append(newPostCardHeading);
+    newPostCard.append(newPostCardBody);
+    newPostCard.data("post", post);
+    return newPostCard;
+    }
+
+        function deletePost() {
+           console.log(this.id)
+           id = this.id;
+        var currentURL = window.location.origin;
+        console.log(currentURL  + "/api/loggedin/" + id);
+        $.ajax({ url: currentURL + "/api/loggedin/" + id, method: "DELETE" })
+      .then(function() {
+        getPosts();
+      });
+    }
+
+    //This function displays a message when there are no posts
+    function displayEmpty() {
+    blogContainer.empty();
+    var messageH2 = $("<h2>");
+    messageH2.css({ "text-align": "center", "margin-top": "50px" });
+    messageH2.html("No posts yet.");
+    blogContainer.append(messageH2);
+  }
+});
+    //$(document).on("click", "#deletePost", deletePost);
+ 
 </script>

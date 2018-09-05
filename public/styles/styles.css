@@ -89,4 +89,111 @@ button {
 #sidenavsearch {
   background-color: #424242;
 }
+
+.brand-logo {
+  -webkit-animation: text-flicker 3s linear 3;
+          animation: text-flicker 3s linear 3;
+}
+
+@-webkit-keyframes text-flicker {
+  0% {
+    opacity: 0.1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  2% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  8% {
+    opacity: 0.1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  9% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  12% {
+    opacity: 0.1;
+    text-shadow: 0px 0px #ff9900;
+  }
+  20% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  25% {
+    opacity: 0.3;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  30% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  70% {
+    opacity: 0.7;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  72% {
+    opacity: 0.2;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  77% {
+    opacity: .9;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  100% {
+    opacity: .9;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+}
+
+@keyframes text-flicker {
+  0% {
+    opacity: 0.1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  2% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  8% {
+    opacity: 0.1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  9% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  12% {
+    opacity: 0.1;
+    text-shadow: 0px 0px #ff9900;
+  }
+  20% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  25% {
+    opacity: 0.3;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  30% {
+    opacity: 1;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  70% {
+    opacity: 0.7;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  72% {
+    opacity: 0.2;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  77% {
+    opacity: .9;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+  100% {
+    opacity: .9;
+    text-shadow: 0px 0px 29px #ff9900;
+  }
+}
 /*# sourceMappingURL=styles.css.map */
